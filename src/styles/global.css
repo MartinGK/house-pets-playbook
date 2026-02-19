@@ -252,55 +252,101 @@ p {
 }
 
 .collage-album-shell {
-  padding: 1rem;
-  border-radius: 18px;
+  position: relative;
+  padding: 1.1rem;
+  border-radius: 22px;
   border: 1px solid rgba(176, 137, 104, 0.45);
   background:
     radial-gradient(circle at 14% 12%, rgba(255, 255, 255, 0.55), transparent 34%),
+    radial-gradient(circle at 88% 82%, rgba(255, 241, 227, 0.5), transparent 36%),
     linear-gradient(145deg, rgba(250, 242, 233, 0.9), rgba(230, 204, 178, 0.7));
+  overflow: hidden;
+}
+
+.collage-album-shell::before,
+.collage-album-shell::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.collage-album-shell::before {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px;
+  mix-blend-mode: soft-light;
+}
+
+.collage-album-shell::after {
+  width: 220px;
+  height: 220px;
+  right: -70px;
+  top: -80px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(127, 85, 57, 0.14), rgba(127, 85, 57, 0));
 }
 
 .collage-item {
-  margin: 0.25rem;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 6px solid #fffaf6;
-  box-shadow: 0 10px 24px rgba(127, 85, 57, 0.24);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  z-index: 1;
+  --tilt: 0deg;
+  --offset-y: 0px;
+  margin: 0.15rem;
+  border-radius: 3px;
+  overflow: visible;
+  background: #fff;
+  border: 1px solid rgba(227, 216, 206, 0.9);
+  padding: 8px 8px 34px;
+  box-shadow:
+    0 10px 20px rgba(84, 54, 34, 0.2),
+    0 2px 4px rgba(84, 54, 34, 0.12);
+  transform: translateY(var(--offset-y)) rotate(var(--tilt)) translateZ(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  will-change: transform;
 }
 
 .collage-item:nth-child(4n + 1) {
-  transform: rotate(-1.9deg);
+  --tilt: -2.5deg;
+  --offset-y: 7px;
 }
 
 .collage-item:nth-child(4n + 2) {
-  transform: rotate(1.7deg);
+  --tilt: 2.1deg;
+  --offset-y: -5px;
 }
 
 .collage-item:nth-child(4n + 3) {
-  transform: rotate(-1deg);
+  --tilt: -1.4deg;
+  --offset-y: 4px;
 }
 
 .collage-item:nth-child(4n + 4) {
-  transform: rotate(1deg);
+  --tilt: 1.3deg;
+  --offset-y: -1px;
 }
 
 .collage-item:hover {
-  transform: rotate(0deg) translateY(-2px) scale(1.01);
-  box-shadow: 0 16px 30px rgba(127, 85, 57, 0.3);
+  transform: translateY(-5px) rotate(0deg) scale(1.02);
+  box-shadow:
+    0 16px 32px rgba(84, 54, 34, 0.24),
+    0 4px 8px rgba(84, 54, 34, 0.14);
+  filter: saturate(1.06);
 }
 
 .collage-photo-trigger {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 1px;
 }
 
 .collage-album-image {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 1px;
   object-fit: cover;
-  filter: saturate(1.05) contrast(1.02);
+  filter: saturate(1.04) contrast(1.02);
 }
 
 .clean-list {
