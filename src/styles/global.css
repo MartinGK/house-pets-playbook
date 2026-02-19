@@ -1,0 +1,404 @@
+:root {
+  --cream-100: #EDE0D4;
+  --sand-200: #E6CCB2;
+  --sand-300: #DDB892;
+  --earth-500: #B08968;
+  --earth-700: #7F5539;
+  --clay-600: #9C6644;
+  --taupe-500: #B08569;
+
+  --text-main: #4f3422;
+  --shadow-soft: 0 10px 24px rgba(127, 85, 57, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at top, var(--sand-200), var(--cream-100) 46%, #f8f2ec 100%);
+}
+
+.app-shell {
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+  padding: 1.2rem 0 3.2rem;
+}
+
+main {
+  display: grid;
+  gap: 1.1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.hero {
+  margin: 0.6rem 0 1.2rem;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: linear-gradient(140deg, var(--sand-300), var(--earth-500));
+  color: #fffaf6;
+  box-shadow: var(--shadow-soft);
+}
+
+.badge {
+  display: inline-block;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero h1 {
+  font-size: clamp(1.65rem, 5.6vw, 3rem);
+  line-height: 1.08;
+}
+
+.hero-subtitle {
+  margin-top: 0.7rem;
+  max-width: 55ch;
+  font-size: 1rem;
+}
+
+.hero-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.7rem 0.95rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  background: var(--earth-700);
+  color: var(--cream-100);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--earth-700);
+}
+
+.section {
+  scroll-margin-top: 18px;
+}
+
+.section h2 {
+  font-size: clamp(1.35rem, 4.5vw, 1.9rem);
+  margin-bottom: 0.6rem;
+}
+
+.section-content {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(237, 224, 212, 0.85));
+  border: 1px solid rgba(176, 137, 104, 0.35);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.pet-card {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pet-card img,
+.image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  background: linear-gradient(140deg, var(--sand-200), var(--taupe-500));
+}
+
+.image-trigger {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 12px;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.image-trigger img {
+  display: block;
+  width: 100%;
+}
+
+.image-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+}
+
+.image-modal-overlay {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  background: rgba(31, 19, 11, 0.8);
+  padding: 0;
+  cursor: zoom-out;
+}
+
+.image-modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 920px);
+  max-height: 86vh;
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.image-modal-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.image-placeholder {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #fffaf4;
+  font-weight: 800;
+}
+
+.image-placeholder small {
+  font-weight: 600;
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.pet-subtitle {
+  color: var(--clay-600);
+  font-weight: 700;
+}
+
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.collage-item {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(176, 137, 104, 0.35);
+  box-shadow: var(--shadow-soft);
+}
+
+.collage-item img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.clean-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.6rem;
+}
+
+.warning-item {
+  border-color: rgba(156, 102, 68, 0.7);
+  background: linear-gradient(180deg, rgba(255, 245, 238, 0.95), rgba(230, 204, 178, 0.95));
+}
+
+.special-call-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.guide-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.guide-link {
+  justify-self: start;
+}
+
+.note {
+  font-weight: 700;
+  color: var(--earth-700);
+}
+
+.helper-error {
+  color: #8f2a17;
+  font-weight: 700;
+}
+
+.simple-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+}
+
+.humor-card {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.humor-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.closing-card {
+  display: grid;
+  gap: 0.85rem;
+  background: linear-gradient(
+    180deg,
+    rgba(237, 224, 212, 0.96) 0%,
+    rgba(221, 184, 146, 0.94) 48%,
+    rgba(127, 85, 57, 0.96) 100%
+  );
+}
+
+.closing-card > p,
+.closing-card .signature p:first-child {
+  color: var(--text-main);
+}
+
+.closing-card .signature p:last-child {
+  color: #fffaf6;
+}
+
+.closing-card.signature p {
+  text-align: center;
+}
+
+.signature {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 800;
+}
+
+.dog-icon {
+  color: #9C6644;
+}
+
+.closing-card .cat-icon {
+  color: #ffffff;
+  filter: drop-shadow(0 1px 2px rgba(79, 52, 34, 0.6));
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 720px) {
+  .three-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .two-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .collage-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .app-shell {
+    padding-top: 1.4rem;
+  }
+}
+
+@media (min-width: 980px) {
+  .collage-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.visible,
+  .btn {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
