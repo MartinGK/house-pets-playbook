@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ImageModalProps {
   src: string;
@@ -32,13 +33,16 @@ export function ImageModal({ src, alt, isOpen, onClose }: ImageModalProps) {
     return null;
   }
 
-  return (
+  return createPortal(
     <div className="image-modal-backdrop" role="dialog" aria-modal="true" aria-label={alt}>
       <button type="button" className="image-modal-close" onClick={onClose} aria-label="Cerrar imagen">
         ×
       </button>
       <button type="button" className="image-modal-overlay" onClick={onClose} aria-label="Cerrar modal" />
-      <img className="image-modal-content" src={src} alt={alt} />
-    </div>
+      <div className="image-modal-stage">
+        <img className="image-modal-content" src={src} alt={alt} />
+      </div>
+    </div>,
+    document.body
   );
 }
