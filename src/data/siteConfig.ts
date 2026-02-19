@@ -133,7 +133,7 @@ export const siteConfig: SiteConfig = {
   },
   specialCall: {
     title: 'Llamado especial',
-    audioSrc: '/src/assets/llamado-gatos.mp3',
+    audioSrc: '/sonido_para_gatos.m4a',
     playLabel: 'Reproducir',
     stopLabel: 'Detener',
     rewardTip: 'Cuando vuelven, refuerzo positivo con premio.',
